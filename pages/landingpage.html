@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Atrações Vale dos Carcarás</title>
+    <script src="https://kit.fontawesome.com/f97e46e193.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        .texto {
+            padding: 15px;
+            text-align: justify;
+        }
+
+        .texto h2 {
+            font-size: 2.2rem;
+            color: #0c0636;
+            text-align: center;
+        }
+
+        /* HEADER */
+        nav {
+            background-color: #059b9a;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            width: 100%;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        nav li {
+            height: 50px;
+        }
+
+        nav a {
+            height: 100%;
+            padding: 0 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: aliceblue;
+        }
+
+        label.logo {
+            color: #0c0636;
+            font-size: 30px;
+            line-height: 80px;
+            padding: 0 100px;
+            font-weight: bold;
+        }
+
+        a.active,
+        a:hover {
+            background: #66b6ab;
+        }
+
+        .checkbtn {
+            font-size: 30px;
+            color: antiquewhite;
+            float: right;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 250px;
+            z-index: 999;
+            background-color: #0c0636;
+            backdrop-filter: blur(10px);
+            box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .sidebar li {
+            width: 100%;
+        }
+
+        .sidebar a {
+            width: 100%;
+        }
+
+        @media(max-width: 700px) {
+            .hideOnMobile {
+                display: none;
+            }
+
+            .checkbtn {
+                display: block;
+            }
+
+            label.logo {
+                font-size: 30px;
+                padding-left: 40px;
+            }
+        }
+
+        @media(max-width: 400px) {
+            .sidebar {
+                width: 100%;
+            }
+        }
+
+        /* FOOTER */
+        footer {
+
+            bottom: 0;
+        }
+
+        @media (max-height: 800px) {
+            footer {
+                position: static;
+            }
+        }
+
+        .footer-distributed {
+            background-color: #059b9a;
+            box-sizing: border-box;
+            widows: 100%;
+            text-align: center;
+            padding: 50px 50px 60px 50px;
+            margin-top: 80px;
+        }
+
+        .footer-distributed .footer-left,
+        .footer-distributed .footer-center,
+        .footer-distributed .footer-right {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .footer-distributed .footer-left {
+            width: 30%;
+        }
+
+        .footer-distributed h3 {
+            color: #0c0636;
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .footer-distributed .footer-links {
+            color: antiquewhite;
+            margin: 20px 0 12px;
+        }
+
+        .footer-distributed .footer-left a {
+            display: inline-block;
+            line-height: 1.8;
+            text-decoration: none;
+            color: antiquewhite;
+        }
+
+        .footer-distributed .footer-center {
+            width: 35%;
+        }
+
+        .footer-distributed .footer-center i {
+            background-color: #66b6ab;
+            color: antiquewhite;
+            font-size: 25px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 42px;
+            margin: 10px 15px;
+            vertical-align: middle;
+        }
+
+        .footer-distributed .footer-center i.fa-envelope {
+            font-size: 17px;
+            line-height: 38px;
+        }
+
+        .footer-distributed .footer-center p {
+            display: inline-block;
+            color: antiquewhite;
+            vertical-align: middle;
+            margin: 0;
+        }
+
+        .footer-distributed .footer-center p span {
+            display: block;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .footer-distributed .footer-center p a {
+            color: antiquewhite;
+            text-decoration: none;
+        }
+
+        .footer-distributed .footer-right {
+            width: 30%;
+        }
+
+        .footer-distributed .footer-company-about {
+            line-height: 20px;
+            color: antiquewhite;
+            font-size: 13px;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .footer-distributed .footer-company-about span {
+            display: block;
+            color: #0c0636;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer-distributed .footer-icons {
+            margin-top: 25px;
+        }
+
+        .footer-distributed .footer-icons a {
+            display: inline-block;
+            width: 35px;
+            height: 30px;
+            cursor: pointer;
+            border-radius: 2px;
+            font-size: 20px;
+            color: antiquewhite;
+            background-color: #66b6ab;
+            text-align: center;
+            align-content: center;
+            line-height: 35px;
+            margin-right: 3px;
+            margin-bottom: 5px;
+        }
+
+        .footer-distributed .footer-icons a:hover {
+            background-color: #993997a4;
+        }
+
+        .footer-links a:hover {
+            color: #892287;
+            background-color: #75c7bc00;
+        }
+
+        @media(max-width: 880px) {
+
+            .footer-distributed .footer-links,
+            .footer-distributed .footer-center,
+            .footer-distributed .footer-right {
+                display: block;
+                width: 100%;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            .footer-distributed .footer-center {
+                margin-left: 0;
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        h1,
+        h2,
+        h3,
+        p {
+            margin: 0 0 1em 0;
+            color: #000;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            background-color: #059b9a;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 0.5em;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 1.5em;
+        }
+
+        .cta-button {
+            background-color: #fff;
+            color: #03f4fc;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #e3dfde;
+        }
+
+        .details,
+        .lineup,
+        .tickets,
+        .contact {
+            padding: 50px 0;
+        }
+
+        .detail-grid,
+        .lineup-grid,
+        .ticket-options {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .detail,
+        .artist,
+        .ticket {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+            color: #03f4fc;
+        }
+
+        .artist img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 1em;
+        }
+
+        .contact form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        form .cta-button {
+            align-self: start;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <label for="check" class="checkbtn" onclick=showSidebar()>
+                <i class="fas fa-bars"></i>
+            </label>
+            <label class="logo">Vale dos Carcarás</label>
+            <ul class="sidebar">
+                <li onclick="hideSidebar()"><a href=""><i class="fa-solid fa-x"></i></a></li>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="pacotes.html">Pacotes</a></li>
+                <li><a href="atividades.html">Atividades</a></li>
+                <li><a href="inscricoes.html">Inscrições</a></li>
+                <li><a class="active" href="loja.html">Loja</a></li>
+            </ul>
+            <ul>
+                <li class="hideOnMobile"><a href="../ValeDosCarcarás.html">Inicio</a></li>
+                <li class="hideOnMobile"><a href="pacotes.html">Pacotes</a></li>
+                <li class="hideOnMobile"><a href="atividades.html">Atividades</a></li>
+                <li class="hideOnMobile"><a href="inscricoes.html">Inscrições</a></li>
+                <li class="hideOnMobile"><a class="active" href="loja.html">Loja</a></li>
+            </ul>
+        </nav>
+
+        <script>
+            function showSidebar() {
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'flex'
+            }
+            function hideSidebar() {
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'none'
+            }
+        </script>
+
+    </header>
+    <br><br>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Venha para nosso Show</h1>
+            <p>Garanta seus ingressos para essa noite íncrivel com diversas atrações!</p>
+            <a href="#tickets"><button class="cta-button">Compre Seus Ingressos</button></a>
+        </div>
+    </section>
+
+    <section class="details">
+        <div class="container">
+            <h2>Detalhes do Evento</h2>
+            <div class="detail-grid">
+                <div class="detail">
+                    <h3>Data</h3>
+                    <p>30 de Fevereiro de 2025</p>
+                </div>
+                <div class="detail">
+                    <h3>Local</h3>
+                    <p>Parque dos Carcarás</p>
+                </div>
+                <div class="detail">
+                    <h3>Atrações</h3>
+                    <p>Sertanejo, DJ, Rock e Mais!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="lineup">
+        <div class="container">
+            <h2>Line-up</h2>
+            <div class="lineup-grid">
+                <div class="artist">
+                    <img src="/images/sertanejoshow.jpg" alt="Lucas Marinho">
+                    <h3>Lucas Marinho</h3>
+                </div>
+                <div class="artist">
+                    <img src="/images/Djshow.jpg" alt="DJ Vortex">
+                    <h3>DJ Vortex</h3>
+                </div>
+                <div class="artist">
+                    <img src="/images/bandarock.jpg" alt="Rebelion">
+                    <h3>Rebelion</h3>
+                </div>
+                <div class="artist">
+                    <img src="/images/_3997ff30-2e82-4d50-9714-25ff140e4643.jpg" alt="Pedro e Paula">
+                    <h3>Pedro e Paula</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tickets" id="tickets">
+        <div class="container">
+            <h2>Ingressos</h2>
+            <div class="ticket-options">
+                <div class="ticket">
+                    <h3>Pista</h3>
+                    <p>R$ 100,00</p>
+                    <button class="cta-button" type="button" value="#" title="COMPRAR"
+                        onclick="comprar()">Comprar</button>
+                    <script>
+                        function comprar() {
+                            alert("Obrigadopor comprar conosco!")
+                        }
+                    </script>
+                </div>
+                <div class="ticket">
+                    <h3>VIP</h3>
+                    <p>R$ 200,00</p>
+                    <button class="cta-button" type="button" value="#" title="COMPRAR"
+                        onclick="comprar()">Comprar</button>
+                    <script>
+                        function comprar() {
+                            alert("Obrigadopor comprar conosco!")
+                        }
+                    </script>
+                </div>
+                <div class="ticket">
+                    <h3>Camarote</h3>
+                    <p>R$ 400,00</p>
+                    <button class="cta-button" type="button" value="#" title="COMPRAR"
+                        onclick="comprar()">Comprar</button>
+                    <script>
+                        function comprar() {
+                            alert("Obrigadopor comprar conosco!")
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <h2>Contato</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer-distributed">
+        <div class="footer-left">
+            <h3>Vale dos <span>Carcarás</span></h3>
+
+            <p class="footer-links">
+                <a href="#">Inicio</a>
+                |
+                <a href="pages/pacotes.html">Pacotes</a>
+                |
+                <a href="pages/atividades.html">Atividades</a>
+                |
+                <a href="pages/inscriçoes.html">Inscrições</a>
+                |
+                <a href="pages/loja.html">Loja</a>
+            </p>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Riacho azul</span>MG</p>
+            </div>
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>4002-8922</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p>atendimentocarcara@gmial.com</p>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>Sobre a empresa</span>
+                O <strong>Vale dos Carcarás</strong> é um centro recreativo
+                que busca seu conforto e diversão
+            </p>
+            <div class="footer-icons">
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

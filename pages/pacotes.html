@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Pacotes</title>
+    <script src="https://kit.fontawesome.com/f97e46e193.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        .texto {
+            padding: 15px;
+            text-align: justify;
+        }
+
+        .texto h2 {
+            font-size: 2.2rem;
+            color: #0c0636;
+            text-align: center;
+        }
+
+        /* HEADER */
+        nav {
+            background-color: #059b9a;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            width: 100%;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        nav li {
+            height: 50px;
+        }
+
+        nav a {
+            height: 100%;
+            padding: 0 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: aliceblue;
+        }
+
+        label.logo {
+            color: #0c0636;
+            font-size: 30px;
+            line-height: 80px;
+            padding: 0 100px;
+            font-weight: bold;
+        }
+
+        a.active,
+        a:hover {
+            background: #66b6ab;
+        }
+
+        .checkbtn {
+            font-size: 30px;
+            color: antiquewhite;
+            float: right;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 250px;
+            z-index: 999;
+            background-color: #0c0636;
+            backdrop-filter: blur(10px);
+            box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .sidebar li {
+            width: 100%;
+        }
+
+        .sidebar a {
+            width: 100%;
+        }
+
+        @media(max-width: 700px) {
+            .hideOnMobile {
+                display: none;
+            }
+
+            .checkbtn {
+                display: block;
+            }
+
+            label.logo {
+                font-size: 30px;
+                padding-left: 40px;
+            }
+        }
+
+        @media(max-width: 400px) {
+            .sidebar {
+                width: 100%;
+            }
+        }
+
+        /* FOOTER */
+        footer {
+
+            bottom: 0;
+        }
+
+        @media (max-height: 800px) {
+            footer {
+                position: static;
+            }
+        }
+
+        .footer-distributed {
+            background-color: #059b9a;
+            box-sizing: border-box;
+            widows: 100%;
+            text-align: center;
+            padding: 50px 50px 60px 50px;
+            margin-top: 80px;
+        }
+
+        .footer-distributed .footer-left,
+        .footer-distributed .footer-center,
+        .footer-distributed .footer-right {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .footer-distributed .footer-left {
+            width: 30%;
+        }
+
+        .footer-distributed h3 {
+            color: #0c0636;
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .footer-distributed .footer-links {
+            color: antiquewhite;
+            margin: 20px 0 12px;
+        }
+
+        .footer-distributed .footer-left a {
+            display: inline-block;
+            line-height: 1.8;
+            text-decoration: none;
+            color: antiquewhite;
+        }
+
+        .footer-distributed .footer-center {
+            width: 35%;
+        }
+
+        .footer-distributed .footer-center i {
+            background-color: #66b6ab;
+            color: antiquewhite;
+            font-size: 25px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 42px;
+            margin: 10px 15px;
+            vertical-align: middle;
+        }
+
+        .footer-distributed .footer-center i.fa-envelope {
+            font-size: 17px;
+            line-height: 38px;
+        }
+
+        .footer-distributed .footer-center p {
+            display: inline-block;
+            color: antiquewhite;
+            vertical-align: middle;
+            margin: 0;
+        }
+
+        .footer-distributed .footer-center p span {
+            display: block;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .footer-distributed .footer-center p a {
+            color: antiquewhite;
+            text-decoration: none;
+        }
+
+        .footer-distributed .footer-right {
+            width: 30%;
+        }
+
+        .footer-distributed .footer-company-about {
+            line-height: 20px;
+            color: antiquewhite;
+            font-size: 13px;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .footer-distributed .footer-company-about span {
+            display: block;
+            color: #0c0636;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer-distributed .footer-icons {
+            margin-top: 25px;
+        }
+
+        .footer-distributed .footer-icons a {
+            display: inline-block;
+            width: 35px;
+            height: 30px;
+            cursor: pointer;
+            border-radius: 2px;
+            font-size: 20px;
+            color: antiquewhite;
+            background-color: #66b6ab;
+            text-align: center;
+            align-content: center;
+            line-height: 35px;
+            margin-right: 3px;
+            margin-bottom: 5px;
+        }
+
+        .footer-distributed .footer-icons a:hover {
+            background-color: #993997a4;
+        }
+
+        .footer-links a:hover {
+            color: #892287;
+            background-color: #75c7bc00;
+        }
+
+        @media(max-width: 880px) {
+
+            .footer-distributed .footer-links,
+            .footer-distributed .footer-center,
+            .footer-distributed .footer-right {
+                display: block;
+                width: 100%;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            .footer-distributed .footer-center {
+                margin-left: 0;
+            }
+        }
+
+        .tabela {
+            font-family: Arial, Helvetica, sans-serif;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .titulo {
+            background-color: #66b6ab;
+        }
+
+        .linha {
+            background-color: antiquewhite;
+            text-align: center;
+        }
+
+        .btn-comprar {
+            text-align: center;
+        }
+
+        .botao {
+            text-align: center;
+            background-color: #66b6ab;
+            color: antiquewhite;
+            font-size: 30px;
+            font-weight: bold;
+            padding: 10px;
+        }
+
+        .banner {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <label for="check" class="checkbtn" onclick=showSidebar()>
+                <i class="fas fa-bars"></i>
+            </label>
+            <label class="logo">Vale dos Carcarás</label>
+            <ul class="sidebar">
+                <li onclick="hideSidebar()"><a href=""><i class="fa-solid fa-x"></i></a></li>
+                <li><a href="/index.html">Inicio</a></li>
+                <li><a class="active" href="pacotes.html">Pacotes</a></li>
+                <li><a href="atividades.html">Atividades</a></li>
+                <li><a href="inscricoes.html">Inscrições</a></li>
+                <li><a href="loja.html">Loja</a></li>
+            </ul>
+            <ul>
+                <li class="hideOnMobile"><a href="../ValeDosCarcarás.html">Inicio</a></li>
+                <li class="hideOnMobile"><a class="active" href="pacotes.html">Pacotes</a></li>
+                <li class="hideOnMobile"><a href="atividades.html">Atividades</a></li>
+                <li class="hideOnMobile"><a href="inscricoes.html">Inscrições</a></li>
+                <li class="hideOnMobile"><a href="loja.html">Loja</a></li>
+            </ul>
+        </nav>
+
+        <script>
+            function showSidebar() {
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'flex'
+            }
+            function hideSidebar() {
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'none'
+            }
+        </script>
+
+    </header>
+
+    <br><br>
+    <section class="texto">
+        <h2>Pacotes</h2><br>
+        <p>Pacotes disponiveis no momento:</p>
+    </section>
+    <section class="tabela">
+        <table width="95%" border="3" bgcolor="#000000">
+            <tr class="titulo">
+                <th align="center">Pacote</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+            </tr>
+            <tr class="linha">
+                <td align="center">Pacote Simples</td>
+                <td>O pacote simples te da acesso a pista de caminhada, ao complexo esportivo, a represa, a academia, ao
+                    espaço verde e ao espaço kids</td>
+                <td>R$ 100,00</td>
+            </tr>
+            <tr class="linha">
+                <td align="center">Pacote Executivo</td>
+                <td>O pacote executivo te da acesso a pista de caminhada, ao complexo esportivo, a represa, a academia,
+                    ao
+                    espaço verde, ao espaço kids e ao mini zoológico</td>
+                <td>R$ 150,00</td>
+            </tr>
+            <tr class="linha">
+                <td align="center">Pacote Premium</td>
+                <td>O pacote premium te da acesso a pista de caminhada, ao complexo esportivo, a represa, a academia, ao
+                    espaço verde, ao espaço kids e ao mini zoológico, ao parque de diversões e a tirolesa</td>
+                <td>R$ 200,00</td>
+            </tr>
+            <tr class="linha">
+                <td align="center">Pacote VIP</td>
+                <td>O pacote VIP te da acesso a pista de caminhada, ao complexo esportivo, a represa, a academia, ao
+                    espaço
+                    verde, ao espaço kids, ao mini zoológico, ao parque de diversões, a tirolesa e ao parque de
+                    aquáticos
+                </td>
+                <td>R$ 250,00</td>
+            </tr>
+        </table>
+        <p>**Cada pacote inclui a diaria de 1 (uma) pessoa maior que 5 (cinco) anos</p>
+    </section>
+
+    <br><br>
+
+    <section class="btn-comprar">
+        <button class="botao" name="btn" value="#" type="button" onclick="comprar()" title="COMPRAR">COMPRAR</button>
+        <script>
+            function comprar() {
+                alert("Obrigadopor comprar conosco!")
+            }
+        </script>
+    </section>
+    <br><br>
+    <br><br>
+
+    <section class="banner">
+        <figure>
+            <img src="images/banner-High-Quality.jpg" alt="BannerLndPage" usemap="#bannerLndPage">
+        </figure>
+        <map name="bannerLndPage">
+            <area alt="blndp" shape="rect" href="pages/landingpage.html" coords="210,63,310,89"
+                title="Garanta seu ingresso" target="_blank">
+        </map>
+
+    </section>
+
+    <footer class="footer-distributed">
+        <div class="footer-left">
+            <h3>Vale dos <span>Carcarás</span></h3>
+
+            <p class="footer-links">
+                <a href="../index.html">Inicio</a>
+                |
+                <a href="pacotes.html">Pacotes</a>
+                |
+                <a href="atividades.html">Atividades</a>
+                |
+                <a href="inscriçoes.html">Inscrições</a>
+                |
+                <a href="loja.html">Loja</a>
+            </p>
+
+            <p class="footer-company-name"></p>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Riacho azul</span>MG</p>
+            </div>
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>4002-8922</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p>atendimentocarcara@gmial.com</p>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>Sobre a empresa</span>
+                O <strong>Vale dos Carcarás</strong> é um centro recreativo
+                que busca seu conforto e diversão
+            </p>
+            <div class="footer-icons">
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

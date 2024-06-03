@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Loja Vale dos Carcarás</title>
+    <script src="https://kit.fontawesome.com/f97e46e193.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+        }
+
+        .texto {
+            padding: 15px;
+            text-align: justify;
+        }
+
+        .texto h2 {
+            font-size: 2.2rem;
+            color: #0c0636;
+            text-align: center;
+        }
+
+        /* HEADER */
+        nav {
+            background-color: #059b9a;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            width: 100%;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        nav li {
+            height: 50px;
+        }
+
+        nav a {
+            height: 100%;
+            padding: 0 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: aliceblue;
+        }
+
+        label.logo {
+            color: #0c0636;
+            font-size: 30px;
+            line-height: 80px;
+            padding: 0 100px;
+            font-weight: bold;
+        }
+
+        a.active,
+        a:hover {
+            background: #66b6ab;
+        }
+
+        .checkbtn {
+            font-size: 30px;
+            color: antiquewhite;
+            float: right;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+            display: none;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 250px;
+            z-index: 999;
+            background-color: #0c0636;
+            backdrop-filter: blur(10px);
+            box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .sidebar li {
+            width: 100%;
+        }
+
+        .sidebar a {
+            width: 100%;
+        }
+
+        @media(max-width: 700px) {
+            .hideOnMobile {
+                display: none;
+            }
+
+            .checkbtn {
+                display: block;
+            }
+
+            label.logo {
+                font-size: 30px;
+                padding-left: 40px;
+            }
+        }
+
+        @media(max-width: 400px) {
+            .sidebar {
+                width: 100%;
+            }
+        }
+
+        /* FOOTER */
+        footer {
+
+            bottom: 0;
+        }
+
+        @media (max-height: 800px) {
+            footer {
+                position: static;
+            }
+        }
+
+        .footer-distributed {
+            background-color: #059b9a;
+            box-sizing: border-box;
+            widows: 100%;
+            text-align: center;
+            padding: 50px 50px 60px 50px;
+            margin-top: 80px;
+        }
+
+        .footer-distributed .footer-left,
+        .footer-distributed .footer-center,
+        .footer-distributed .footer-right {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .footer-distributed .footer-left {
+            width: 30%;
+        }
+
+        .footer-distributed h3 {
+            color: #0c0636;
+            margin: 0;
+            font-size: 36px;
+        }
+
+        .footer-distributed .footer-links {
+            color: antiquewhite;
+            margin: 20px 0 12px;
+        }
+
+        .footer-distributed .footer-left a {
+            display: inline-block;
+            line-height: 1.8;
+            text-decoration: none;
+            color: antiquewhite;
+        }
+
+        .footer-distributed .footer-center {
+            width: 35%;
+        }
+
+        .footer-distributed .footer-center i {
+            background-color: #66b6ab;
+            color: antiquewhite;
+            font-size: 25px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 42px;
+            margin: 10px 15px;
+            vertical-align: middle;
+        }
+
+        .footer-distributed .footer-center i.fa-envelope {
+            font-size: 17px;
+            line-height: 38px;
+        }
+
+        .footer-distributed .footer-center p {
+            display: inline-block;
+            color: antiquewhite;
+            vertical-align: middle;
+            margin: 0;
+        }
+
+        .footer-distributed .footer-center p span {
+            display: block;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 2;
+        }
+
+        .footer-distributed .footer-center p a {
+            color: antiquewhite;
+            text-decoration: none;
+        }
+
+        .footer-distributed .footer-right {
+            width: 30%;
+        }
+
+        .footer-distributed .footer-company-about {
+            line-height: 20px;
+            color: antiquewhite;
+            font-size: 13px;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .footer-distributed .footer-company-about span {
+            display: block;
+            color: #0c0636;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .footer-distributed .footer-icons {
+            margin-top: 25px;
+        }
+
+        .footer-distributed .footer-icons a {
+            display: inline-block;
+            width: 35px;
+            height: 30px;
+            cursor: pointer;
+            border-radius: 2px;
+            font-size: 20px;
+            color: antiquewhite;
+            background-color: #66b6ab;
+            text-align: center;
+            align-content: center;
+            line-height: 35px;
+            margin-right: 3px;
+            margin-bottom: 5px;
+        }
+
+        .footer-distributed .footer-icons a:hover {
+            background-color: #993997a4;
+        }
+
+        .footer-links a:hover {
+            color: #892287;
+            background-color: #75c7bc00;
+        }
+
+        @media(max-width: 880px) {
+
+            .footer-distributed .footer-links,
+            .footer-distributed .footer-center,
+            .footer-distributed .footer-right {
+                display: block;
+                width: 100%;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+
+            .footer-distributed .footer-center {
+                margin-left: 0;
+            }
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 30px;
+            margin: 0;
+            padding-top: 10px;
+            color: aliceblue;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .grid-imagens {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            margin: 50px 0;
+        }
+
+        .produto {
+            width: 20%;
+            margin: 15px;
+            box-sizing: border-box;
+            float: left;
+            text-align: center;
+            border-radius: 20px;
+            cursor: pointer;
+            padding-top: 10px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+                0 10px 10px rgba(0, 0, 0, 0.22);
+            transition: .4s;
+            background: #059b9a;
+        }
+
+        .produto:hover {
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+                0 3px 6px rgba(0, 0, 0, 0.23);
+            transform: translate(0px, -8px);
+        }
+
+        .produto img {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .produto p {
+            text-align: center;
+            color: #0c0636;
+            padding: 8px;
+        }
+
+        .produto h4 {
+            font-size: 26px;
+            text-align: center;
+            color: rgb(190, 218, 243);
+            margin: 0;
+            padding: 5px;
+        }
+
+        .produto button {
+            text-align: center;
+            font-size: 24px;
+            color: #0c0636;
+            width: 100%;
+            padding: 15px;
+            border: 0;
+            outline: none;
+            cursor: pointer;
+            margin-top: 5px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .compre {
+            background: #66b6ab;
+        }
+
+        @media (max-width: 1000px) {
+            .produto {
+                width: 45px;
+            }
+        }
+
+        @media (max-width: 750px) {
+            .produto {
+                width: 100%;
+            }
+        }
+
+        .banner {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <label for="check" class="checkbtn" onclick=showSidebar()>
+                <i class="fas fa-bars"></i>
+            </label>
+            <label class="logo">Vale dos Carcarás</label>
+            <ul class="sidebar">
+                <li onclick="hideSidebar()"><a href=""><i class="fa-solid fa-x"></i></a></li>
+                <li><a href="/index.html">Inicio</a></li>
+                <li><a href="pacotes.html">Pacotes</a></li>
+                <li><a href="atividades.html">Atividades</a></li>
+                <li><a href="inscricoes.html">Inscrições</a></li>
+                <li><a class="active" href="loja.html">Loja</a></li>
+            </ul>
+            <ul>
+                <li class="hideOnMobile"><a href="../ValeDosCarcarás.html">Inicio</a></li>
+                <li class="hideOnMobile"><a href="pacotes.html">Pacotes</a></li>
+                <li class="hideOnMobile"><a href="atividades.html">Atividades</a></li>
+                <li class="hideOnMobile"><a href="inscricoes.html">Inscrições</a></li>
+                <li class="hideOnMobile"><a class="active" href="loja.html">Loja</a></li>
+            </ul>
+        </nav>
+
+        <script>
+            function showSidebar() {
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'flex'
+            }
+            function hideSidebar() {
+                const sidebar = document.querySelector('.sidebar')
+                sidebar.style.display = 'none'
+            }
+        </script>
+
+    </header>
+    <br><br>
+
+
+    <section class="texto">
+        <h2>Loja Vale dos Carcarás</h2><br>
+        <p>O Parque Vale doa Carcarás fica feliz em apresentar nossa loja de lembrancinhas
+            para que sua visita fique guardada para sempre na memória!Nossa loja oferece
+            diversos produtos para todos os gostos, com os itens disponiveis na loja física
+            dentro do parque!
+        </p>
+    </section>
+
+    <div class="grid-imagens">
+        <div class="produto">
+            <img src="../images/1.png" alt="camisa">
+            <h3>Camisa Carcará</h3>
+            <p>A Camiseta Branca estampada com nosso mascote tem modelagem regular. Dá pra usar em momentos mais casuais
+                no
+                trabalho ou até mesmo em momentos de lazer em nosso parque.</p>
+            <h4>R$54,90</h4>
+            <button class="compre">Comprar!</button>
+        </div>
+        <div class="produto">
+            <img src="../images/2.png" alt="camisa">
+            <h3>Camisa Carcará Real</h3>
+            <p>A Camiseta Branca estampada com pássaro tem modelagem regular. Dá pra usar em momentos mais casuais no
+                trabalho ou até mesmo em momentos de lazer em nosso parque.</p>
+            <h4>R$54,90</h4>
+            <button class="compre">Comprar!</button>
+        </div>
+        <div class="produto">
+            <img src="../images/3.png" alt="camisa">
+            <h3>Camisa Carcará Bordada</h3>
+            <p>A Camiseta Verde água Básica com pássaro Bordado tem modelagem regular e clean. Dá pra usar em momentos
+                mais
+                casuais no trabalho ou até mesmo em momentos de lazer em nosso parque.</p>
+            <h4>R$44,90</h4>
+            <button class="compre">Comprar!</button>
+        </div>
+        <div class="produto">
+            <img src="../images/4.png" alt="camisa">
+            <h3>Camisa Carcarás Bordada</h3>
+            <p>A Camiseta Laranja Básica com pássaro Bordado tem modelagem regular e clean. Dá pra usar em momentos mais
+                casuais no trabalho ou até mesmo em momentos de lazer em nosso parque.</p>
+            <h4>R$44,90</h4>
+            <button class="compre">Comprar!</button>
+        </div>
+        <div class="produto">
+            <img src="../images/5.png" alt="moletom">
+            <h3>Moletom Parque dos Carcarás</h3>
+            <p>Moletom modelo canguru Parque Vale dos Carcarás. Confortável. modelos exclusivo, com ótima qualidade e
+                muito
+                conforto.</p>
+            <h4>R$139,90</h4>
+            <button class="compre">Comprar!</button>
+        </div>
+        <div class="produto">
+            <img src="../images/6.png" alt="moletom">
+            <h3>Moletom Carcará</h3>
+            <p>Moletom modelo canguru estampado com mascote parque. Confortável. modelos exclusivo, com ótima qualidade
+                e
+                muito conforto.</p>
+            <h4>R$139,90</h4>
+            <button class="compre">Comprar!</button>
+        </div>
+        <div class="produto">
+            <img src="../images/7.png" alt="bone">
+            <h3>Boné Carcará</h3>
+            <p>Boné branco aba curva. Confortável e divertido. Ideial para deixar sua família mais protegida e estilosa.
+            </p>
+            <h4>R$34,90</h4>
+            <button class="compre">Comprar!</button>
+        </div>
+        <div class="produto">
+            <img src="../images/8.png" alt="caneca">
+            <h3>Caneca Parque dos Carcarás</h3>
+            <p>Caneca branca estampada parque, com excelente acabamento e cores intensas. O que deixa o passeio mais
+                interessante e divertido</p>
+            <h4>R$20,90</h4>
+            <button class="compre">Comprar!</button>
+        </div>
+        <div class="produto">
+            <img src="../images/9.png" alt="copo">
+            <h3>Copo Carcarás</h3>
+            <p>Copo Preto estampado parque, com excelente acabamento e cores intensas. O que deixa o passeio mais
+                interessante e divertido</p>
+            <h4>R$14,90</h4>
+            <button class="compre">Comprar!</button>
+        </div>
+        <div class="produto">
+            <img src="../images/10.png" alt="pelucia">
+            <h3>Carcará de pelucia</h3>
+            <p>Ave de Pelúcia 20 cm.
+                Ótimo para crianças, super macio e fofo. Perfeito para presente de aniversário.</p>
+            <h4>R$34,90</h4>
+            <button class="compre">Comprar!</button>
+        </div>
+    </div>
+    <br><br>
+
+    <section class="banner">
+        <figure>
+            <img src="images/banner-High-Quality.jpg" alt="BannerLndPage" usemap="#bannerLndPage">
+        </figure>
+        <map name="bannerLndPage">
+            <area alt="blndp" shape="rect" href="pages/landingpage.html" coords="210,63,310,89"
+                title="Garanta seu ingresso" target="_blank">
+        </map>
+
+    </section>
+
+    <footer class="footer-distributed">
+        <div class="footer-left">
+            <h3>Vale dos <span>Carcarás</span></h3>
+
+            <p class="footer-links">
+                <a href="../index.html">Inicio</a>
+                |
+                <a href="pacotes.html">Pacotes</a>
+                |
+                <a href="atividades.html">Atividades</a>
+                |
+                <a href="inscriçoes.html">Inscrições</a>
+                |
+                <a href="loja.html">Loja</a>
+            </p>
+
+            <p class="footer-company-name"></p>
+        </div>
+
+        <div class="footer-center">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Riacho azul</span>MG</p>
+            </div>
+            <div>
+                <i class="fa fa-phone"></i>
+                <p>4002-8922</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p>atendimentocarcara@gmial.com</p>
+            </div>
+        </div>
+
+        <div class="footer-right">
+            <p class="footer-company-about">
+                <span>Sobre a empresa</span>
+                O <strong>Vale dos Carcarás</strong> é um centro recreativo
+                que busca seu conforto e diversão
+            </p>
+            <div class="footer-icons">
+                <a href=""><i class="fab fa-facebook"></i></a>
+                <a href=""><i class="fab fa-twitter"></i></a>
+                <a href=""><i class="fab fa-instagram"></i></a>
+                <a href=""><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
